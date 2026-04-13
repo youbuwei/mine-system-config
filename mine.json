@@ -1,0 +1,24 @@
+{
+    "name": "ns-ticket/system-config",
+    "version": "1.0.0",
+    "type": "mixed",
+    "description": "系统配置管理插件 - 支持模块化3级配置体系（模块>分组>配置项）",
+    "homepage": "https://www.mineadmin.com",
+    "author": [
+        {
+            "name": "guikejia"
+        }
+    ],
+    "composer": {
+        "require": {},
+        "psr-4": {
+            "Plugin\\NsTicket\\SystemConfig\\": "src"
+        },
+        "installScript": "Plugin\\NsTicket\\SystemConfig\\InstallScript",
+        "uninstallScript": "Plugin\\NsTicket\\SystemConfig\\UninstallScript",
+        "config": "Plugin\\NsTicket\\SystemConfig\\ConfigProvider"
+    },
+    "package": {
+        "dependencies": []
+    }
+}
