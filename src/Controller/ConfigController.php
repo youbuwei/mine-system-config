@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Plugin\NsTicket\SystemConfig\Controller;
+namespace Plugin\Youbuwei\SystemConfig\Controller;
 
 use App\Http\Common\Controller\AbstractController;
 use App\Http\Common\Middleware\AccessTokenMiddleware;
@@ -16,8 +16,8 @@ use Hyperf\Swagger\Annotation\Post;
 use Hyperf\Swagger\Annotation\Put;
 use Mine\Access\Attribute\Permission;
 use Mine\Swagger\Attributes\ResultResponse;
-use Plugin\NsTicket\SystemConfig\Service\ConfigModuleRegistry;
-use Plugin\NsTicket\SystemConfig\Service\ConfigService;
+use Plugin\Youbuwei\SystemConfig\Service\ConfigModuleRegistry;
+use Plugin\Youbuwei\SystemConfig\Service\ConfigService;
 
 #[Controller(prefix: 'admin/config')]
 #[HyperfServer(name: 'http')]

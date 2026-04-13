@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Plugin\NsTicket\SystemConfig\Service;
+namespace Plugin\Youbuwei\SystemConfig\Service;
 
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\Redis\Redis;
@@ -16,7 +16,7 @@ class ConfigCacheService
     #[Inject]
     protected RedisFactory $redisFactory;
 
-    protected string $prefix = 'ns:config:';
+    protected string $prefix = 'youbuwei:config:';
 
     protected int $ttl = 3600;
 

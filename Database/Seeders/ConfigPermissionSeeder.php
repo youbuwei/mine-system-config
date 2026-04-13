@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Plugin\NsTicket\SystemConfig\Database\Seeders;
+namespace Plugin\Youbuwei\SystemConfig\Database\Seeders;
 
 use Hyperf\DbConnection\Db;
 

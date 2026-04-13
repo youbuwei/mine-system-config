@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Plugin\NsTicket\SystemConfig\Service;
+namespace Plugin\Youbuwei\SystemConfig\Service;
 
 use App\Http\CurrentUser;
 use App\Library\IPHelper;
 use Hyperf\Collection\Collection;
 use Hyperf\DbConnection\Db;
 use Hyperf\Di\Annotation\Inject;
-use Plugin\NsTicket\SystemConfig\Model\ConfigField;
-use Plugin\NsTicket\SystemConfig\Model\ConfigGroup;
-use Plugin\NsTicket\SystemConfig\Model\ConfigItem;
-use Plugin\NsTicket\SystemConfig\Model\ConfigModule;
-use Plugin\NsTicket\SystemConfig\Repository\ConfigFieldRepository;
-use Plugin\NsTicket\SystemConfig\Repository\ConfigGroupRepository;
-use Plugin\NsTicket\SystemConfig\Repository\ConfigItemRepository;
-use Plugin\NsTicket\SystemConfig\Repository\ConfigLogRepository;
-use Plugin\NsTicket\SystemConfig\Repository\ConfigModuleRepository;
-use Plugin\NsTicket\SystemConfig\Repository\ConfigValueRepository;
+use Plugin\Youbuwei\SystemConfig\Model\ConfigField;
+use Plugin\Youbuwei\SystemConfig\Model\ConfigGroup;
+use Plugin\Youbuwei\SystemConfig\Model\ConfigItem;
+use Plugin\Youbuwei\SystemConfig\Model\ConfigModule;
+use Plugin\Youbuwei\SystemConfig\Repository\ConfigFieldRepository;
+use Plugin\Youbuwei\SystemConfig\Repository\ConfigGroupRepository;
+use Plugin\Youbuwei\SystemConfig\Repository\ConfigItemRepository;
+use Plugin\Youbuwei\SystemConfig\Repository\ConfigLogRepository;
+use Plugin\Youbuwei\SystemConfig\Repository\ConfigModuleRepository;
+use Plugin\Youbuwei\SystemConfig\Repository\ConfigValueRepository;
 
 /**
  * 配置服务 - 核心业务逻辑.

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Plugin\NsTicket\SystemConfig\Model;
+namespace Plugin\Youbuwei\SystemConfig\Model;
 
 /**
  * 配置字段模型（向后兼容别名）.

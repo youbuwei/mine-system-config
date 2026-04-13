@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Plugin\NsTicket\SystemConfig\Model;
+namespace Plugin\Youbuwei\SystemConfig\Model;
 
 use Carbon\Carbon;
 use Hyperf\Database\Model\Relations\BelongsTo;

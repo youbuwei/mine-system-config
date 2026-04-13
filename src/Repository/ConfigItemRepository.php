@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Plugin\NsTicket\SystemConfig\Repository;
+namespace Plugin\Youbuwei\SystemConfig\Repository;
 
 use App\Repository\IRepository;
 use Hyperf\Database\Model\Builder;
-use Plugin\NsTicket\SystemConfig\Model\ConfigItem;
+use Plugin\Youbuwei\SystemConfig\Model\ConfigItem;
 
 /**
  * 配置项仓库.

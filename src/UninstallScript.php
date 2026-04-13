@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Plugin\NsTicket\SystemConfig;
+namespace Plugin\Youbuwei\SystemConfig;
 
 class UninstallScript
 {
@@ -40,7 +40,7 @@ class UninstallScript
                 ->get(\Hyperf\Redis\RedisFactory::class)
                 ->get('default');
 
-            $keys = $redis->keys('ns:config:*');
+            $keys = $redis->keys('youbuwei:config:*');
             if (! empty($keys)) {
                 $redis->del($keys);
                 echo "  已清除配置缓存\n";

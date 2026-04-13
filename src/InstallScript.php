@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Plugin\NsTicket\SystemConfig;
+namespace Plugin\Youbuwei\SystemConfig;
 
 use Mine\Support\Filesystem;
 

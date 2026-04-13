@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Plugin\NsTicket\SystemConfig\Service;
+namespace Plugin\Youbuwei\SystemConfig\Service;
 
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\Support\Filesystem\Filesystem;
-use Plugin\NsTicket\SystemConfig\Model\ConfigGroup;
-use Plugin\NsTicket\SystemConfig\Model\ConfigItem;
-use Plugin\NsTicket\SystemConfig\Model\ConfigModule;
+use Plugin\Youbuwei\SystemConfig\Model\ConfigGroup;
+use Plugin\Youbuwei\SystemConfig\Model\ConfigItem;
+use Plugin\Youbuwei\SystemConfig\Model\ConfigModule;
 use Psr\Log\LoggerInterface;
 
 /**

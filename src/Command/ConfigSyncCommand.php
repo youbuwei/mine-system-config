@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Plugin\NsTicket\SystemConfig\Command;
+namespace Plugin\Youbuwei\SystemConfig\Command;
 
 use Hyperf\Command\Annotation\Command;
 use Hyperf\Command\Command as HyperfCommand;
-use Plugin\NsTicket\SystemConfig\Service\ConfigModuleRegistry;
+use Plugin\Youbuwei\SystemConfig\Service\ConfigModuleRegistry;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
