@@ -2,7 +2,7 @@
 import { nextTick, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import { getModuleTree, getModuleValues, updateModuleConfigValues } from '~/settings/api/config'
+import { getModuleTree, getModuleValues, updateModuleConfigValues } from '../../api/config'
 import ConfigForm from './components/ConfigForm.vue'
 
 defineOptions({ name: 'settings:config' })
@@ -76,7 +76,7 @@ async function loadModules() {
 // 导航到指定模块和分组（使用 query 参数，replace 避免触发新标签页）
 function navigateTo(moduleKey: string, groupKey?: string) {
   router.replace({
-    path: '/settings/config',
+    path: '/system/settings',
     query: {
       module: moduleKey,
       ...(groupKey ? { group: groupKey } : {}),

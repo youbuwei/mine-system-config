@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Plugin\Youbuwei\SystemConfig\Service;
 
 use App\Http\CurrentUser;
-use App\Library\IPHelper;
 use Hyperf\Collection\Collection;
 use Hyperf\DbConnection\Db;
 use Hyperf\Di\Annotation\Inject;
@@ -152,7 +151,7 @@ class ConfigService
             $oldValue,
             (string) $value,
             $this->currentUser->id(),
-            IPHelper::getClientIp()
+            $this->getClientIp()
         );
 
         $this->cacheService->forget($field->getPath(), $scope);
@@ -321,7 +320,7 @@ class ConfigService
                     $oldValue,
                     (string) $value,
                     $this->currentUser->id(),
-                    IPHelper::getClientIp()
+                    $this->getClientIp()
                 );
             }
 
@@ -462,5 +461,22 @@ class ConfigService
             'sort' => $item->sort,
             'is_encrypted' => $item->is_encrypted,
         ];
+    }
+
+    protected function getClientIp(): string
+    {
+        $request = \Hyperf\Context\ApplicationContext::getContainer()
+            ->get(\Hyperf\HttpServer\Contract\RequestInterface::class);
+
+        $ip = $request->getHeaderLine('x-forwarded-for')
+            ?: $request->getHeaderLine('x-real-ip')
+            ?: $request->getServerParams()['remote_addr']
+            ?? '127.0.0.1';
+
+        if (str_contains($ip, ',')) {
+            $ip = trim(explode(',', $ip)[0]);
+        }
+
+        return $ip;
     }
 }
