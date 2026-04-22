@@ -12,7 +12,8 @@
     "composer": {
         "require": {},
         "psr-4": {
-            "Plugin\\Youbuwei\\SystemConfig\\": "src"
+            "Plugin\\Youbuwei\\SystemConfig\\": "src",
+            "Plugin\\Youbuwei\\SystemConfig\\Database\\": "Database"
         },
         "installScript": "Plugin\\Youbuwei\\SystemConfig\\InstallScript",
         "uninstallScript": "Plugin\\Youbuwei\\SystemConfig\\UninstallScript",
