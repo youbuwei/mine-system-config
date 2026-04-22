@@ -56,35 +56,35 @@ class InstallScript
 
     protected function seedI18n(): void
     {
-        $localeDir = BASE_PATH . '/web/src/modules/base/locales';
-        if (! is_dir($localeDir)) {
+        $targetDir = BASE_PATH . '/web/src/modules/base/locales';
+        $sourceDir = \dirname(__DIR__) . '/web/locales';
+
+        if (! is_dir($targetDir) || ! is_dir($sourceDir)) {
             return;
         }
 
-        $translations = [
-            'zh_CN[简体中文].yaml' => ['index' => '系统配置', 'config' => '配置管理'],
-            'zh_TW[繁體中文].yaml' => ['index' => '系統配置', 'config' => '配置管理'],
-            'en[English].yaml' => ['index' => 'System Config', 'config' => 'Config Management'],
+        $localeMap = [
+            'zh_CN.yaml' => 'zh_CN[简体中文].yaml',
+            'zh_TW.yaml' => 'zh_TW[繁體中文].yaml',
+            'en.yaml' => 'en[English].yaml',
         ];
 
-        foreach ($translations as $file => $keys) {
-            $path = $localeDir . '/' . $file;
-            if (! file_exists($path)) {
+        foreach ($localeMap as $sourceFile => $targetFile) {
+            $sourcePath = $sourceDir . '/' . $sourceFile;
+            $targetPath = $targetDir . '/' . $targetFile;
+
+            if (! file_exists($sourcePath) || ! file_exists($targetPath)) {
                 continue;
             }
 
-            $content = file_get_contents($path);
+            $content = file_get_contents($targetPath);
             if (str_contains($content, 'systemConfig')) {
                 continue;
             }
 
-            $entry = "\n  systemConfig:\n";
-            foreach ($keys as $key => $value) {
-                $entry .= "    {$key}: {$value}\n";
-            }
-
-            file_put_contents($path, rtrim($content) . $entry);
-            $this->info("已添加国际化翻译: {$file}");
+            $entry = "\n" . rtrim(file_get_contents($sourcePath));
+            file_put_contents($targetPath, rtrim($content) . $entry);
+            $this->info("已添加国际化翻译: {$targetFile}");
         }
     }
 }
