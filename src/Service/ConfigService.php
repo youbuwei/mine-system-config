@@ -8,11 +8,9 @@ use App\Http\CurrentUser;
 use Hyperf\Collection\Collection;
 use Hyperf\DbConnection\Db;
 use Hyperf\Di\Annotation\Inject;
-use Plugin\Youbuwei\SystemConfig\Model\ConfigField;
 use Plugin\Youbuwei\SystemConfig\Model\ConfigGroup;
 use Plugin\Youbuwei\SystemConfig\Model\ConfigItem;
 use Plugin\Youbuwei\SystemConfig\Model\ConfigModule;
-use Plugin\Youbuwei\SystemConfig\Repository\ConfigFieldRepository;
 use Plugin\Youbuwei\SystemConfig\Repository\ConfigGroupRepository;
 use Plugin\Youbuwei\SystemConfig\Repository\ConfigItemRepository;
 use Plugin\Youbuwei\SystemConfig\Repository\ConfigLogRepository;
@@ -32,9 +30,6 @@ class ConfigService
 
     #[Inject]
     protected ConfigItemRepository $itemRepository;
-
-    #[Inject]
-    protected ConfigFieldRepository $fieldRepository;
 
     #[Inject]
     protected ConfigValueRepository $valueRepository;
@@ -63,7 +58,7 @@ class ConfigService
         return $this->cacheService->remember(
             "config:group:{$groupId}:fields",
             3600,
-            fn () => $this->fieldRepository->getByGroupId($groupId)
+            fn () => $this->itemRepository->getByGroupId($groupId)
         );
     }
 
@@ -107,7 +102,7 @@ class ConfigService
             return [];
         }
 
-        $fields = $this->fieldRepository->getByGroupId($group->id);
+        $fields = $this->itemRepository->getByGroupId($group->id);
         $values = $this->valueRepository->getByScope($scope);
 
         $result = [];
@@ -121,7 +116,7 @@ class ConfigService
 
     public function set(string $path, mixed $value, string $scope = 'default'): bool
     {
-        $field = $this->fieldRepository->findByPath($path);
+        $field = $this->itemRepository->findByPath($path);
         if (! $field) {
             return false;
         }
@@ -173,7 +168,7 @@ class ConfigService
             return;
         }
 
-        $fields = $this->fieldRepository->list(['group_id' => $groupId, 'status' => 1]);
+        $fields = $this->itemRepository->list(['group_id' => $groupId, 'status' => 1]);
         $fieldMap = $fields->keyBy('key');
 
         foreach ($data as $fieldKey => $value) {
@@ -379,7 +374,7 @@ class ConfigService
         });
     }
 
-    protected function formatField(ConfigField $field): array
+    protected function formatField(ConfigItem $field): array
     {
         return [
             'id' => $field->id,
